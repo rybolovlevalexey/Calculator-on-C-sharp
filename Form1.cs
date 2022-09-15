@@ -200,5 +200,54 @@ namespace Калькулятор
             binar_deyst = 0;
             should_go_up = false;
         }
+
+        private void CopyButtonPushed(object sender, EventArgs e)
+        {
+            Clipboard.SetText(textBox2.Text);
+        }
+
+        private void DeletePushed(object sender, EventArgs e)
+        {
+            if (textBox1.Text.Length != 0)
+            {
+                if (binar_deyst == 0)
+                {
+                    textBox1.Text = textBox1.Text.Remove(textBox1.Text.Length - 1);
+                }
+                else
+                {
+                    bool last_symbol_is_number = false;
+                    for (int i = 0; i <= 9; i += 1)
+                    {
+                        if (Convert.ToString(textBox1.Text[textBox1.Text.Length - 1]) == Convert.ToString(i))
+                        {
+                            last_symbol_is_number = true;
+                            break;
+                        }
+                    }
+                    if (last_symbol_is_number)
+                    {
+                        textBox1.Text = textBox1.Text.Remove(textBox1.Text.Length - 1);
+                    }
+                    else
+                    {
+                        if (textBox1.Text.Length >= 2)
+                        {
+                            textBox1.Text = textBox1.Text.Remove(textBox1.Text.Length - 2);
+                        } else
+                        {
+                            textBox1.Text = "";
+                        }
+                        
+                    }
+                    if (label1.Text.Length != 0)
+                    {
+                        MakeBinarResult();
+                    }
+                    
+                }
+            }
+            
+        }
     }
 }
