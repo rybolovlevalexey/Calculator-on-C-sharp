@@ -98,6 +98,29 @@ namespace Калькулятор
                 {
                     MakeBinarResult();
                 }
+            } else
+            {
+                if (textBox2.Text.Length == 0)
+                {
+                    int number = Convert.ToInt32(textBox1.Text);
+                    int ans = 1;
+                    for (int j = 1; j <= number; j += 1)
+                    {
+                        ans *= j;
+                    }
+                    textBox2.Text = Convert.ToString(ans);
+                    textBox1.Text = Convert.ToString(number);
+                } else
+                {
+                    int number = Convert.ToInt32(textBox2.Text);
+                    int ans = 1;
+                    for (int j = 1; j <= number; j += 1)
+                    {
+                        ans *= j;
+                    }
+                    textBox2.Text = Convert.ToString(ans);
+                    textBox1.Text = Convert.ToString(number);
+                }
             }
         }
         private void OperatorButtonPushed(object sender, EventArgs e)
