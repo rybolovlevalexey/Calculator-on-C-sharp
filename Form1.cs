@@ -15,6 +15,7 @@ namespace Калькулятор
         int binar_deyst = 0;  // 1 - сложение, 2 - вычитание, 3 - произведение, 4 - деление, 5 - степень
         bool double_flag = false;
         bool should_go_up = false;
+        bool flag_take_number_from_textBox2 = false;
         public Form1()
         {
             InitializeComponent();
@@ -100,6 +101,7 @@ namespace Калькулятор
                 }
             } else
             {
+                flag_take_number_from_textBox2 = true;
                 if (textBox2.Text.Length == 0)
                 {
                     int number = Convert.ToInt32(textBox1.Text);
@@ -125,6 +127,10 @@ namespace Калькулятор
         }
         private void OperatorButtonPushed(object sender, EventArgs e)
         {
+            if (flag_take_number_from_textBox2)
+            {
+                textBox1.Text = textBox2.Text;
+            }
             string text_in_button = (sender as Button).Text;
             if (binar_deyst == 0)
             {
